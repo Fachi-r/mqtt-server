@@ -1,5 +1,5 @@
 import express from "express";
-import { mqttClient } from "./mqttClient";
+import { mqttClient } from ".";
 
 const router = express.Router();
 
