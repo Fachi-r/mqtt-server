@@ -13,7 +13,7 @@ export async function getSensorData() {
     return data;
   } catch (error) {
     console.error(error);
-    console.log("Failed to insert data: ", error);
+    console.log("Failed to fetch data: ", error);
   }
 }
 
