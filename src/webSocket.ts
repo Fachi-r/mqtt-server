@@ -1,7 +1,10 @@
 import { WebSocket, WebSocketServer } from "ws";
 import http from "http";
+import express from "express"; // Add this
 
-export const server = http.createServer();
+export const app = express(); // Create the Express app here
+export const server = http.createServer(app); // Attach app to server
+
 const wss = new WebSocketServer({ server });
 
 export let clients: Set<WebSocket> = new Set();

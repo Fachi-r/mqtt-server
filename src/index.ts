@@ -1,28 +1,24 @@
-import express from "express";
 import routes from "./routes";
-import { server } from "./webSocket";
+import { app, server } from "./webSocket";
 import cors from "cors";
+import express from "express";
 
-export const app = express();
-const webSocketPort = process.env.PORT || 4000;
-const mqttPort = process.env.MQTT_PORT || 4001;
+const PORT = process.env.PORT || 4000;
+// const mqttPort = process.env.MQTT_PORT || 4001;
 
-app.use(express.json());
 // Allow all origins (development mode only!)
-// Fix: CORS middleware
 app.use(cors());
+app.use(express.json());
 app.use("/", routes);
 
 app.get("/", (_req, res) => {
   res.send("Server + WebSocket are up!");
 });
 
-app.listen(mqttPort, () => {
-  console.log(`🚀 MQTT server running on http://localhost:${mqttPort}`);
-});
+// app.listen(mqttPort, () => {
+//   console.log(`🚀 MQTT server running on http://localhost:${mqttPort}`);
+// });
 
-server.listen(webSocketPort, () => {
-  console.log(
-    `🚀 WebSocket server running on http://localhost:${webSocketPort}`
-  );
+server.listen(PORT, () => {
+  console.log(`🚀 Server (Express + WebSocket) running on port ${PORT}`);
 });
