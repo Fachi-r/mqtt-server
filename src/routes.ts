@@ -1,6 +1,5 @@
 import express from "express";
-import { mqttClient } from ".";
-import { lastSeenTimestamp } from ".";
+import { lastSeenTimestamp, mqttClient } from "./mqttClient";
 
 const router = express.Router();
 

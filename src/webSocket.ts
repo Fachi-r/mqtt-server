@@ -1,6 +1,5 @@
 import { WebSocket, WebSocketServer } from "ws";
 import http from "http";
-// import { app } from ".";
 
 export const server = http.createServer();
 const wss = new WebSocketServer({ server });
