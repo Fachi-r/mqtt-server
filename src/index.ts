@@ -10,14 +10,7 @@ const mqttPort = process.env.MQTT_PORT || 4001;
 app.use(express.json());
 // Allow all origins (development mode only!)
 // Fix: CORS middleware
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
-    credentials: true,
-  })
-);
+app.use(cors());
 app.use("/", routes);
 
 app.get("/", (_req, res) => {
@@ -29,5 +22,7 @@ app.listen(mqttPort, () => {
 });
 
 server.listen(webSocketPort, () => {
-  console.log(`🚀 WebSocket server running on http://localhost:${webSocketPort}`);
+  console.log(
+    `🚀 WebSocket server running on http://localhost:${webSocketPort}`
+  );
 });
